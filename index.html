@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Eros' iPhone</title>
+
+<!-- ============ CSS: inti HP ============ -->
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/lock.css">
+<link rel="stylesheet" href="css/shell.css">
+
+<!-- ============ CSS: satu file per aplikasi ============ -->
+<link rel="stylesheet" href="apps/whatsapp/whatsapp.css">
+<link rel="stylesheet" href="apps/instagram/instagram.css">
+<link rel="stylesheet" href="apps/x/x.css">
+<link rel="stylesheet" href="apps/weather/weather.css">
+<link rel="stylesheet" href="apps/music/music.css">
+<link rel="stylesheet" href="apps/messages/messages.css">
+<link rel="stylesheet" href="apps/photos/photos.css">
+<link rel="stylesheet" href="apps/safari/safari.css">
+<link rel="stylesheet" href="apps/misc/misc.css">
+</head>
+<body>
+<button id="themeBtn" type="button">Tema: terang</button>
+
+<div class="stage" id="stage">
+  <div class="device" id="device">
+    <!-- Tombol samping -->
+    <div class="btn action"></div>
+    <div class="btn volup"></div>
+    <div class="btn voldn"></div>
+    <div class="btn power" id="power" title="Power (klik = layar mati / hidup)"></div>
+
+    <div class="bezel">
+      <div class="screen" id="screen">
+        <div class="wallpaper"></div>
+
+        <!-- Dynamic Island + Status bar -->
+        <div class="island"></div>
+        <div class="status" id="statusbar">
+          <div class="l" id="sbleft">TSEL</div>
+          <div class="r">
+            <svg width="18" height="12" viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+            <svg width="17" height="12" viewBox="0 0 17 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.2 4.2a10 10 0 0114.6 0"/><path d="M3.9 7a6.2 6.2 0 019.2 0"/><circle cx="8.5" cy="10.3" r="1.1" fill="currentColor" stroke="none"/></svg>
+            <svg width="27" height="13" viewBox="0 0 27 13"><rect x=".5" y=".5" width="23" height="12" rx="3.8" fill="none" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="20" height="9" rx="2.5" fill="currentColor"/><path d="M25 4.4v4.2c.9-.3 1.5-1.2 1.5-2.1s-.6-1.8-1.5-2.1z" fill="currentColor" opacity=".5"/></svg>
+          </div>
+        </div>
+
+        <!-- Home screen -->
+        <section class="layer" id="home">
+          <div class="widgets">
+            <div class="wcol">
+              <div class="widget w-date">
+                <div class="dow" id="wdow">Tuesday</div>
+                <div class="num" id="wnum">20</div>
+                <div class="ev">Tidak ada acara<br>hari ini</div>
+              </div>
+              <div class="wlabel">Calendar</div>
+            </div>
+            <div class="wcol">
+              <div class="widget w-photo"><span class="tag">Eros'</span></div>
+              <div class="wlabel">Photos</div>
+            </div>
+          </div>
+          <div class="grid" id="grid"></div>
+          <div class="search" id="searchpill">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><circle cx="10" cy="10" r="7"/><path d="M15.5 15.5L22 22"/></svg>Search
+          </div>
+          <div class="dock" id="dock"></div>
+        </section>
+
+        <!-- Lock screen -->
+        <section class="layer" id="lock">
+          <div class="wallpaper"></div>
+          <div class="lock-date" id="ldate">Tue 20 Oct</div>
+          <div class="lock-time" id="ltime">21.25</div>
+          <button class="qbtn l" id="torch" type="button" aria-label="Flashlight">
+            <svg viewBox="0 0 24 24"><path d="M8 2h8v3l-1.5 2.5V11h-5V7.5L8 5V2zm2.5 10h3v10a1.5 1.5 0 01-3 0V12z"/></svg>
+          </button>
+          <button class="qbtn r" type="button" aria-label="Camera">
+            <svg viewBox="0 0 24 24"><path d="M9 4l-1.5 2H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V8a2 2 0 00-2-2h-3.5L15 4H9zm3 4.5a4.5 4.5 0 110 9 4.5 4.5 0 010-9z"/></svg>
+          </button>
+          <div class="swipe">Swipe up to open</div>
+        </section>
+
+        <!-- Passcode -->
+        <section class="layer" id="pass">
+          <svg class="lockico" viewBox="0 0 24 24"><path d="M7 10V7a5 5 0 0110 0v3h1.5A1.5 1.5 0 0120 11.5v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 014 20.5v-9A1.5 1.5 0 015.5 10H7zm2 0h6V7a3 3 0 00-6 0v3z"/></svg>
+          <h2>Enter Passcode</h2>
+          <p>Hint: Tanggal omken saling lirik</p>
+          <div class="dots" id="dots"></div>
+          <div class="keys" id="keys"></div>
+          <div class="pass-foot">
+            <button type="button">Emergency</button>
+            <button type="button" id="cancel">Cancel</button>
+          </div>
+        </section>
+
+        <!-- Semua aplikasi membuat layar-nya sendiri di sini (lihat folder apps/) -->
+        <div id="appLayers"></div>
+
+        <div class="home-ind" id="homeind" title="Home"></div>
+        <div class="glare"></div>
+        <div class="off-cover"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ JS: inti HP (urutan penting) ============ -->
+<script src="js/config.js"></script>
+<script src="js/core/helpers.js"></script>
+<script src="js/core/icons.js"></script>
+<script src="js/core/phone.js"></script>
+
+<!-- ============ JS: aplikasi (satu folder per aplikasi) ============ -->
+<script src="apps/whatsapp/whatsapp.data.js"></script>
+<script src="apps/whatsapp/whatsapp.js"></script>
+<script src="apps/instagram/instagram.data.js"></script>
+<script src="apps/instagram/instagram.js"></script>
+<script src="apps/x/x.data.js"></script>
+<script src="apps/x/x.js"></script>
+<script src="apps/music/music.data.js"></script>
+<script src="apps/music/music.js"></script>
+<script src="apps/messages/messages.data.js"></script>
+<script src="apps/messages/messages.js"></script>
+<script src="apps/photos/photos.js"></script>
+<script src="apps/safari/safari.js"></script>
+<script src="apps/misc/simple-app.js"></script>
+<script src="apps/misc/settings.js"></script>
+<script src="apps/misc/notes.js"></script>
+<script src="apps/misc/clock.js"></script>
+<script src="apps/misc/maps.js"></script>
+<script src="apps/misc/mail.js"></script>
+<script src="apps/misc/camera.js"></script>
+<script src="apps/weather/weather.data.js"></script>
+<script src="apps/weather/weather.js"></script>
+
+<!-- ============ JS: finishing (harus terakhir) ============ -->
+<script src="js/core/home.js"></script>
+<script src="js/core/lock.js"></script>
+</body>
+</html>

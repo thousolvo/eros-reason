@@ -1,0 +1,50 @@
+.app-head {
+  padding: 78px 22px 12px;
+}
+
+.app-head h1 {
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.app-body {
+  padding: 0 16px;
+  font-size: 15px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  background: #1c1c1e;
+  border-bottom: 0.5px solid #38383a;
+}
+
+.row:first-child {
+  border-radius: 12px 12px 0 0;
+}
+
+.row:last-child {
+  border: 0;
+  border-radius: 0 0 12px 12px;
+}
+
+.row span:last-child {
+  color: #8e8e93;
+}
+
+.card {
+  background: #1c1c1e;
+  border-radius: 14px;
+  padding: 18px;
+  line-height: 1.5;
+  color: #d0d0d4;
+  margin-bottom: 12px;
+}
+
+.big {
+  font-size: 64px;
+  font-weight: 200;
+}

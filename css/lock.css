@@ -1,0 +1,337 @@
+#lock .lock-time {
+  font-family: var(--font-clock);
+}
+
+#lock {
+  z-index: 30;
+  text-align: center;
+  transition:
+    transform 0.5s var(--ease),
+    opacity 0.4s ease;
+}
+
+#lock.dragging {
+  transition: none;
+}
+
+#lock.gone {
+  transform: translateY(-105%);
+  pointer-events: none;
+}
+
+#lock .bg {
+  position: absolute;
+  inset: 0;
+  background: inherit;
+}
+
+.lock-date {
+  margin-top: 78px;
+  font-size: 20px;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+.lock-time {
+  font-size: 96px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -2px;
+  margin-top: 2px;
+  opacity: 0.92;
+}
+
+.qbtn {
+  position: absolute;
+  bottom: 62px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: rgba(30, 30, 34, 0.45);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.qbtn.l {
+  left: 46px;
+}
+
+.qbtn.r {
+  right: 46px;
+}
+
+.qbtn.on {
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.qbtn.on svg {
+  fill: #111;
+}
+
+.qbtn svg {
+  width: 22px;
+  height: 22px;
+  fill: #fff;
+}
+
+.swipe {
+  position: absolute;
+  bottom: 22px;
+  left: 0;
+  right: 0;
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.swipe .bar {
+  width: 134px;
+  height: 5px;
+  background: #fff;
+  border-radius: 3px;
+  margin: 12px auto 0;
+}
+
+#pass {
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 74px;
+  opacity: 0;
+  pointer-events: none;
+  background: rgba(20, 14, 44, 0.35);
+  backdrop-filter: blur(34px) saturate(1.3);
+  -webkit-backdrop-filter: blur(34px) saturate(1.3);
+  transition: opacity 0.35s ease;
+}
+
+#pass.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#pass .lockico {
+  width: 22px;
+  height: 22px;
+  fill: #fff;
+  margin-bottom: 12px;
+}
+
+#pass h2 {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+}
+
+.dots {
+  display: flex;
+  gap: 20px;
+  margin: 28px 0 12px;
+}
+
+.dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 1.5px solid #fff;
+  transition: background 0.12s;
+}
+
+.dot.on {
+  background: #fff;
+}
+
+.hint {
+  font-size: 10px;
+  gap:25px 25px;
+  opacity: 0.75;
+  height: 10px;
+}
+
+.keys {
+  display: grid;
+  grid-template-columns: repeat(3, 78px);
+  gap: 16px 24px;
+  margin-top: 34px;
+}
+
+.key {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  border: 0;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+
+.key small {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.4px;
+  margin-top: 2px;
+  height: 11px;
+}
+
+.key:active {
+  background: rgba(255, 255, 255, 0.55);
+  transition: none;
+}
+
+.key.blank {
+  visibility: hidden;
+}
+
+.pass-foot {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 46px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 48px;
+}
+
+.pass-foot button {
+  background: none;
+  border: 0;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.shake {
+  animation: shake 0.45s;
+}
+
+@keyframes shake {
+  15%,
+  55% {
+    transform: translateX(-12px);
+  }
+  35%,
+  75% {
+    transform: translateX(12px);
+  }
+}
+
+#pass {
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+#pass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(155deg, #3b3154b3, #0f1029a6);
+  pointer-events: none;
+}
+
+#lock {
+  touch-action: none;
+  will-change: transform;
+}
+
+#lock.dragging {
+  transition: none !important;
+}
+
+#lock .swipe {
+  pointer-events: none;
+}
+
+#pass.swipe-preview {
+  opacity: var(--pass-reveal, 0);
+  pointer-events: none;
+  transition: none;
+}
+
+#lock.dragging {
+  filter: blur(var(--lock-blur, 0px));
+}
+
+.qbtn,
+.key:not(.blank),
+.pass-foot button {
+  background: var(--lg-fill);
+  -webkit-backdrop-filter: var(--lg-filter);
+  backdrop-filter: var(--lg-filter);
+  border: 0;
+  box-shadow:
+    inset 0 0 0 0.5px var(--lg-edge),
+    inset 1.5px 1.5px 1px -1px var(--lg-hi),
+    inset -1.5px -1.5px 1px -1.5px var(--lg-lo),
+    inset 0 0 16px var(--lg-glow),
+    var(--lg-drop);
+  transition:
+    transform 0.28s var(--ease),
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.qbtn:active,
+.pass-foot button:active {
+  transform: scale(0.94);
+  filter: brightness(1.12);
+}
+
+.key:not(.blank):active {
+  background: var(--lg-press);
+  transform: scale(0.93);
+  transition: none;
+}
+
+.qbtn {
+  width: 54px;
+  height: 54px;
+}
+
+.qbtn.on {
+  background: linear-gradient(135deg, #ffffff 0%, #eceff7 100%);
+  box-shadow:
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.9),
+    inset 1.5px 1.5px 1px -1px #fff,
+    0 0 22px rgba(255, 255, 255, 0.55),
+    var(--lg-drop);
+}
+
+#pass {
+  background: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+#pass::before {
+  background:
+    linear-gradient(155deg, #3b3154b3, #0f1029a6), rgba(20, 14, 44, 0.35);
+  -webkit-backdrop-filter: blur(34px) saturate(1.4);
+  backdrop-filter: blur(34px) saturate(1.4);
+}
+
+.key {
+  font-weight: 400;
+}
+
+.pass-foot button {
+  padding: 11px 22px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 500;
+}

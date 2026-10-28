@@ -1,0 +1,87 @@
+/* =====================================================================
+   WEATHER — gaya iOS 26 (kartu kaca di atas latar gradien cuaca)
+   Semua gaya dibatasi ke #weather supaya tidak bentrok dengan aplikasi lain.
+   ===================================================================== */
+#weather { background: #1c2b3a; color: #fff; }
+:where(#weather) button { border: 0; background: none; color: inherit; text-align: left; }
+#weather svg { display: block; }
+#weather .wx-glass {
+  background: rgba(255, 255, 255, 0.16);
+  -webkit-backdrop-filter: blur(22px) saturate(1.7); backdrop-filter: blur(22px) saturate(1.7);
+  box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.3), inset 1.5px 1.5px 1px -1px rgba(255, 255, 255, 0.55), 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+.wx-bg { position: absolute; inset: 0; transition: background 0.6s ease; background: linear-gradient(180deg, #2f86d6, #78c0f2); }
+.wx-ic { flex: none; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15)); }
+
+/* ---------- Scroll & hero ---------- */
+.wx-scroll { position: absolute; inset: 0; overflow-y: auto; padding: 70px 16px 130px; scrollbar-width: none; }
+.wx-scroll::-webkit-scrollbar, .wx-clist::-webkit-scrollbar, .wx-hours::-webkit-scrollbar { display: none; }
+.wx-hero { text-align: center; padding: 20px 0 26px; text-shadow: 0 1px 12px rgba(0, 0, 0, 0.15); }
+.wx-hero h2 { font-size: 34px; font-weight: 500; letter-spacing: -0.4px; }
+.wx-temp { font-size: 100px; font-weight: 200; line-height: 1.05; letter-spacing: -4px; margin-left: 14px; }
+.wx-hero p { font-size: 20px; font-weight: 500; opacity: 0.95; }
+.wx-hero p.hl { margin-top: 2px; font-size: 20px; }
+.wx-hero p.off { margin-top: 8px; font-size: 12px; opacity: 0.7; }
+.wx-mini { position: absolute; z-index: 5; top: 54px; left: 50%; transform: translate(-50%, -10px); opacity: 0; pointer-events: none; padding: 8px 20px; border-radius: 22px; text-align: center; white-space: nowrap; }
+.wx-mini b { display: block; font-size: 16px; font-weight: 600; }
+.wx-mini span { font-size: 13px; opacity: 0.9; }
+
+/* ---------- Kartu ---------- */
+.wx-card { border-radius: 22px; padding: 12px 14px 14px; margin-bottom: 12px; min-width: 0; }
+.wx-card h3 { font-size: 12px; font-weight: 600; letter-spacing: 0.4px; opacity: 0.7; padding-bottom: 8px; margin-bottom: 8px; border-bottom: 0.5px solid rgba(255, 255, 255, 0.25); }
+.wx-hours { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; margin: 0 -4px; padding: 0 4px; }
+.wx-hours > div { flex: none; width: 52px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.wx-hours span { font-size: 14px; font-weight: 500; }
+.wx-hours em { font-size: 11px; font-style: normal; font-weight: 600; color: #8fd6ff; height: 13px; }
+.wx-hours b { font-size: 18px; font-weight: 500; }
+.wx-day { display: grid; grid-template-columns: 58px 30px 34px 34px 1fr 34px; align-items: center; gap: 4px; padding: 6px 0; border-top: 0.5px solid rgba(255, 255, 255, 0.18); }
+.wx-day:first-child { border-top: 0; }
+.wx-day span { font-size: 17px; font-weight: 500; text-transform: capitalize; }
+.wx-day em { font-size: 11px; font-style: normal; font-weight: 600; color: #8fd6ff; text-align: center; }
+.wx-day i { font-style: normal; font-size: 17px; opacity: 0.6; text-align: right; }
+.wx-day b { font-size: 17px; font-weight: 500; text-align: right; }
+.wx-track { position: relative; height: 5px; border-radius: 3px; background: rgba(0, 0, 0, 0.22); margin: 0 6px; }
+.wx-track u { position: absolute; top: 0; bottom: 0; border-radius: 3px; background: linear-gradient(90deg, #7fd1ff, #ffd84a 60%, #ff9d3d); }
+.wx-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.wx-grid .wx-card { margin: 0; min-height: 150px; }
+.wx-big { font-size: 34px; font-weight: 500; letter-spacing: -0.5px; }
+.wx-big small { font-size: 15px; font-weight: 500; opacity: 0.8; }
+.wx-sub { font-size: 14px; margin-top: 6px; opacity: 0.9; line-height: 1.3; }
+
+/* ---------- Bar bawah ---------- */
+.wx-bar { position: absolute; z-index: 6; left: 14px; right: 14px; bottom: 24px; height: 58px; border-radius: 29px; display: flex; align-items: center; justify-content: space-between; padding: 0 10px; }
+.wx-bar > button { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 50%; }
+.wx-bar > button svg { width: 24px; height: 24px; }
+.wx-bar > button:active { background: rgba(255, 255, 255, 0.18); }
+.wx-dots { display: flex; gap: 8px; align-items: center; }
+.wx-dots i { width: 7px; height: 7px; border-radius: 50%; background: rgba(255, 255, 255, 0.4); display: grid; place-items: center; cursor: pointer; }
+.wx-dots i.on { background: #fff; }
+.wx-dots i svg { width: 9px; height: 9px; color: rgba(255, 255, 255, 0.5); }
+.wx-dots i.on svg { color: #111; }
+.wx-dots i:has(svg) { width: 9px; height: 9px; background: none; }
+.wx-dots i:has(svg).on svg { color: #fff; }
+
+/* ---------- Daftar kota ---------- */
+.wx-cities { position: absolute; z-index: 20; inset: 0; background: #12161d; transform: translateY(102%); transition: transform 0.42s var(--ease); }
+.wx-cities.open { transform: none; }
+.wx-chead { display: flex; justify-content: space-between; align-items: center; padding: 58px 18px 8px; }
+.wx-chead h1 { font-size: 34px; font-weight: 700; letter-spacing: -0.6px; }
+.wx-chead button { height: 40px; padding: 0 18px; border-radius: 20px; font-size: 16px; font-weight: 500; }
+.wx-search { margin: 6px 16px 12px; height: 44px; border-radius: 22px; display: flex; align-items: center; gap: 8px; padding: 0 14px; }
+.wx-search svg { width: 18px; height: 18px; opacity: 0.6; }
+.wx-search input { flex: 1; min-width: 0; border: 0; outline: 0; background: none; color: #fff; font-size: 16px; user-select: text; }
+.wx-search input::placeholder { color: rgba(255, 255, 255, 0.5); }
+.wx-clist { position: absolute; top: 172px; bottom: 0; left: 0; right: 0; overflow-y: auto; padding: 4px 16px 130px; scrollbar-width: none; }
+.wx-ccard { position: relative; display: flex; justify-content: space-between; align-items: flex-end; height: 98px; border-radius: 22px; padding: 14px 18px; margin-bottom: 12px; cursor: pointer; box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.2); transition: background 0.4s; }
+.wx-ccard b { display: block; font-size: 22px; font-weight: 600; }
+.wx-ccard span { font-size: 14px; opacity: 0.9; }
+.wx-ccard strong { text-align: right; font-size: 44px; font-weight: 300; line-height: 1; }
+.wx-ccard strong small { display: block; font-size: 13px; font-weight: 500; margin-top: 6px; opacity: 0.9; }
+.wx-del { position: absolute; top: -6px; left: -6px; width: 28px; height: 28px; border-radius: 50%; display: grid !important; place-items: center; background: #ff453a !important; color: #fff; }
+.wx-del svg { width: 14px; height: 14px; }
+.wx-res { display: block; width: 100%; padding: 12px 6px; border-bottom: 0.5px solid rgba(255, 255, 255, 0.15); }
+.wx-res b { display: block; font-size: 17px; font-weight: 500; }
+.wx-res span { font-size: 13px; opacity: 0.6; }
+.wx-none { text-align: center; padding: 30px; opacity: 0.6; }
+.wx-close { position: absolute; right: 16px; bottom: 24px; width: 54px; height: 54px; border-radius: 50%; display: grid !important; place-items: center; }
+.wx-close svg { width: 22px; height: 22px; }

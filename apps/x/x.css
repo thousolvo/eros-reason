@@ -1,0 +1,117 @@
+/* =====================================================================
+   X (Twitter) — warna & tata letak mengikuti aplikasi aslinya
+   Tema gelap = "Lights out", terang = default. Aksen: #1d9bf0
+   ===================================================================== */
+#x {
+  --bg: #fff; --text: #0f1419; --sub: #536471; --sep: #eff3f4; --field: #eff3f4; --blue: #1d9bf0;
+  --x-glass: rgba(255, 255, 255, 0.72); --x-edge: rgba(255, 255, 255, 0.9); --x-drop: rgba(20, 24, 40, 0.14);
+  background: var(--bg); color: var(--text);
+}
+#x[data-theme="dark"] {
+  --bg: #000; --text: #e7e9ea; --sub: #71767b; --sep: #2f3336; --field: #202327;
+  --x-glass: rgba(24, 24, 27, 0.62); --x-edge: rgba(255, 255, 255, 0.16); --x-drop: rgba(0, 0, 0, 0.6);
+}
+:where(#x) button { border: 0; background: none; color: inherit; text-align: left; }
+#x svg { display: block; }
+.x-glass {
+  background: var(--x-glass);
+  -webkit-backdrop-filter: blur(24px) saturate(1.8); backdrop-filter: blur(24px) saturate(1.8);
+}
+.xv { display: inline-block; width: 17px; height: 17px; margin-left: 2px; vertical-align: -3px; }
+
+.x-scroll { position: absolute; inset: 0; overflow-y: auto; padding: 100px 0 140px; scrollbar-width: none; }
+.x-scroll::-webkit-scrollbar, .x-profile::-webkit-scrollbar { display: none; }
+
+/* ---------- Header ---------- */
+.x-head { position: absolute; z-index: 7; top: 0; left: 0; right: 0; height: 100px; padding: 54px 16px 0; display: flex; align-items: center; justify-content: space-between; border-bottom: 0.5px solid var(--sep); }
+.x-me { width: 32px; height: 32px; border-radius: 50%; }
+.x-logo svg { width: 24px; height: 24px; }
+.x-gap { width: 32px; }
+.profile-on .x-head, .profile-on .x-fab { display: none !important; }
+
+.x-feedtabs { display: flex; border-bottom: 0.5px solid var(--sep); }
+.x-feedtabs button { flex: 1; height: 50px; display: grid; place-items: center; font-size: 15px; font-weight: 500; color: var(--sub); text-align: center !important; }
+.x-feedtabs button.on { color: var(--text); font-weight: 700; }
+.x-feedtabs button span { display: inline-block; line-height: 50px; height: 50px; }
+.x-feedtabs button.on span { box-shadow: inset 0 -4px 0 var(--blue); border-radius: 0px; padding: 0 3px; }
+.x-feedtabs.small button { font-size: 14px; }
+
+/* ---------- Tweet ---------- */
+.x-tweet { display: flex; gap: 10px; padding: 12px 16px; border-bottom: 0.5px solid var(--sep); }
+.x-av { flex: none; width: 40px; height: 40px; border-radius: 50%; }
+.x-body { flex: 1; min-width: 0; }
+.x-line { display: flex; align-items: center; gap: 4px; white-space: nowrap; overflow: hidden; }
+.x-nm { display: flex; align-items: center; }
+.x-nm b { font-size: 15px; font-weight: 700; }
+.x-hd { font-size: 15px; color: var(--sub); overflow: hidden; text-overflow: ellipsis; }
+.x-text { font-size: 15px; line-height: 1.38; margin-top: 2px; white-space: pre-wrap; word-wrap: break-word; }
+.x-media { margin-top: 10px; aspect-ratio: 16 / 9; border-radius: 16px; border: 0.5px solid var(--sep); }
+.x-acts { display: flex; justify-content: space-between; margin-top: 10px; color: var(--sub); font-size: 13px; padding-right: 4px; }
+.x-acts > * { display: flex; align-items: center; gap: 5px; }
+.x-acts svg { width: 18px; height: 18px; }
+.x-acts .end { gap: 14px; }
+.x-acts .lk { color: #f91880; }
+.x-acts .lk svg { fill: #f91880; stroke: #f91880; }
+.x-acts .rp { color: #00ba7c; }
+.x-empty { padding: 40px; text-align: center; color: var(--sub); }
+
+/* ---------- Tab lain ---------- */
+.x-h2 { font-size: 20px; font-weight: 800; padding: 12px 16px; }
+.x-search { display: flex; align-items: center; gap: 10px; margin: 6px 16px; height: 42px; border-radius: 999px; background: var(--field); padding: 0 16px; color: var(--sub); }
+.x-search svg { width: 18px; height: 18px; }
+.x-search input { flex: 1; min-width: 0; border: 0; outline: 0; background: none; color: var(--text); font-size: 15px; }
+.x-trend { padding: 10px 16px; }
+.x-trend span { display: block; font-size: 13px; color: var(--sub); }
+.x-trend b { display: block; font-size: 15px; font-weight: 700; margin: 1px 0; }
+.x-notif { display: flex; gap: 12px; padding: 12px 16px; border-bottom: 0.5px solid var(--sep); }
+.x-notif i { color: #f91880; } .x-notif i svg { width: 28px; height: 28px; fill: #f91880; stroke: #f91880; }
+.x-notif p { margin-top: 6px; font-size: 15px; }
+.x-dm { display: flex; gap: 12px; padding: 12px 16px; align-items: center; }
+.x-dm b { font-size: 15px; } .x-dm b span { color: var(--sub); font-weight: 400; }
+.x-dm p { color: var(--sub); font-size: 14px; }
+.x-grok { display: grid; justify-items: center; gap: 8px; padding-top: 200px; color: var(--sub); }
+.x-grok svg { width: 56px; height: 56px; }
+.x-grok h2 { color: var(--text); font-size: 26px; }
+
+/* ---------- FAB & tab bar ---------- */
+.x-fab { position: absolute; z-index: 8; right: 18px; bottom: 106px; width: 58px; height: 58px; border-radius: 50%; display: grid !important; place-items: center; background: var(--blue) !important; color: #fff !important; box-shadow: 0 8px 22px rgba(29, 155, 240, 0.45), inset 0 1.5px 1px -1px rgba(255, 255, 255, 0.8); }
+.x-fab svg { width: 28px; height: 28px; }
+.x-bar { position: absolute; z-index: 9; left: 14px; right: 14px; bottom: 24px; height: 64px; border-radius: 32px; display: flex; padding: 5px; box-shadow: inset 0 0 0 0.5px var(--x-edge), inset 1.5px 1.5px 1px -1px var(--x-edge), 0 8px 24px var(--x-drop); }
+.x-bar button { flex: 1; display: grid; place-items: center; border-radius: 27px; opacity: 0.62; transition: background 0.25s, opacity 0.25s; }
+.x-bar button svg { width: 26px; height: 26px; }
+.x-bar button.on { opacity: 1; background: rgba(120, 120, 128, 0.2); }
+
+/* ---------- Profil ---------- */
+.x-profile { position: absolute; z-index: 6; inset: 0; background: var(--bg); overflow-y: auto; padding-bottom: 130px; transform: translateX(100%); transition: transform 0.35s var(--ease); }
+.x-profile.open { transform: none; }
+.x-pbanner { position: relative; height: 150px; }
+.x-pback { position: absolute; top: 56px; left: 14px; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; color: #fff !important; background: rgba(0, 0, 0, 0.45) !important; }
+.x-pback svg { width: 20px; height: 20px; }
+.x-pinfo { padding: 0 16px 10px; }
+.x-prow { display: flex; justify-content: space-between; align-items: flex-end; margin-top: -42px; }
+.x-pav .av { border: 4px solid var(--bg); box-sizing: content-box; }
+.x-outline, .x-follow { padding: 8px 16px; border-radius: 999px; font-size: 14px; font-weight: 700; text-align: center !important; }
+.x-outline { border: 1px solid var(--sub) !important; }
+.x-follow { background: var(--text) !important; color: var(--bg) !important; }
+.x-follow.on { background: transparent !important; color: var(--text) !important; border: 1px solid var(--sub) !important; }
+.x-pinfo h2 { font-size: 20px; font-weight: 800; margin-top: 8px; }
+.x-handle { color: var(--sub); font-size: 15px; }
+.x-pbio { font-size: 15px; line-height: 1.38; margin: 10px 0; }
+.x-meta { display: flex; flex-wrap: wrap; gap: 4px 14px; color: var(--sub); font-size: 14px; }
+.x-meta .lnk { color: var(--blue); }
+.x-counts { display: flex; gap: 18px; margin-top: 10px; color: var(--sub); font-size: 14px; }
+.x-counts b { color: var(--text); font-weight: 700; }
+
+/* ---------- Sheet Edit profile ---------- */
+.x-sheet { position: absolute; inset: 0; z-index: 30; background: rgba(91, 112, 131, 0); pointer-events: none; transition: background 0.3s; }
+.x-sheet.open { background: rgba(91, 112, 131, 0.45); pointer-events: auto; }
+.x-sheet-in { position: absolute; left: 0; right: 0; bottom: 0; top: 70px; background: var(--bg); border-radius: 20px 20px 0 0; padding: 18px 18px 40px; overflow-y: auto; transform: translateY(100%); transition: transform 0.38s var(--ease); }
+.x-sheet.open .x-sheet-in { transform: none; }
+.x-sheet-in header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.x-sheet-in header button { font-size: 16px; }
+.x-sheet-in header .save { background: var(--text) !important; color: var(--bg) !important; padding: 7px 18px; border-radius: 999px; font-weight: 700; }
+.x-sheet-in label { display: block; font-size: 13px; color: var(--sub); margin-bottom: 14px; }
+.x-sheet-in input, .x-sheet-in textarea { display: block; width: 100%; margin-top: 4px; padding: 10px 12px; border: 1px solid var(--sep); border-radius: 6px; outline: 0; background: none; color: var(--text); font: 16px var(--font); resize: none; }
+.x-sheet-in input:focus, .x-sheet-in textarea:focus { border-color: var(--blue); }
+.x-sheet-in .hint { font-size: 12px; color: var(--sub); line-height: 1.5; }
+.x-sheet-in code { font-size: 11px; background: var(--field); padding: 1px 4px; border-radius: 4px; }

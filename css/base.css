@@ -1,0 +1,334 @@
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/inter-latin-wght-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/inter-latin-ext-wght-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root {
+  
+  --font:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+    "SF Pro", "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-clock:
+    "Times New Roman", Times, serif; 
+  --glass: rgba(255, 255, 255, 0.22);
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --wallpaper-image: url("https://i.pinimg.com/736x/e6/58/45/e658459c09faff1e7bcf17d734d5cfae.jpg");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  color: #fff;
+  background: radial-gradient(120% 90% at 50% 0%, #2a2a31 0%, #0c0c0f 70%);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-synthesis: none;
+}
+
+button,
+input,
+textarea,
+select,
+option {
+  font-family: var(--font);
+  color: inherit;
+}
+
+.screen,
+.screen *,
+.screen svg,
+.screen svg * {
+  font-family: var(--font);
+}
+
+.stage {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.device {
+  position: relative;
+  flex: none;
+  width: 425px;
+  height: 884px;
+  padding: 4px;
+  border-radius: 72px;
+  background: linear-gradient(
+    145deg,
+    #a3a3a9 0%,
+    #55555b 18%,
+    #2e2e33 45%,
+    #4b4b51 72%,
+    #a8a8ae 100%
+  );
+  box-shadow:
+    0 0 0 1px #0a0a0c,
+    0 40px 90px rgba(0, 0, 0, 0.65),
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    inset 0 0 6px rgba(255, 255, 255, 0.35);
+  transform-origin: center center;
+}
+
+.bezel {
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  background: #000;
+  border-radius: 68px;
+  box-shadow: inset 0 0 0 1px #1b1b1e;
+}
+
+.screen {
+  position: relative;
+  width: 393px;
+  height: 852px;
+  border-radius: 56px;
+  overflow: hidden;
+  background: #000;
+  isolation: isolate;
+}
+
+.btn {
+  position: absolute;
+  width: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #3c3c41, #8d8d93 55%, #4a4a50);
+  cursor: default;
+}
+
+.btn.action {
+  left: -3px;
+  top: 150px;
+  height: 34px;
+}
+
+.btn.volup {
+  left: -3px;
+  top: 215px;
+  height: 62px;
+}
+
+.btn.voldn {
+  left: -3px;
+  top: 292px;
+  height: 62px;
+}
+
+.btn.power {
+  right: -3px;
+  top: 250px;
+  height: 100px;
+  background: linear-gradient(270deg, #3c3c41, #8d8d93 55%, #4a4a50);
+  cursor: pointer;
+}
+
+.btn.power:active {
+  transform: translateX(-1px);
+}
+
+body.noframe .device {
+  padding: 0;
+  width: 393px;
+  height: 852px;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+body.noframe .bezel {
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+body.noframe .screen {
+  border-radius: 0;
+}
+
+body.noframe .btn {
+  display: none;
+}
+
+.glare {
+  position: absolute;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0.07) 0%,
+    rgba(255, 255, 255, 0) 32%
+  );
+}
+
+.off-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 95;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.screen.off .off-cover {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.wallpaper {
+  position: absolute;
+  inset: 0;
+  background:
+    var(--wallpaper-image) center / cover no-repeat,
+    radial-gradient(70% 45% at 15% 8%, #ff9a9e 0%, transparent 70%),
+    radial-gradient(65% 45% at 95% 28%, #7f8cff 0%, transparent 70%),
+    radial-gradient(80% 50% at 30% 95%, #ff6fb5 0%, transparent 72%),
+    linear-gradient(180deg, #3a2a6b 0%, #1d1342 55%, #120a2c 100%);
+}
+
+.island {
+  position: absolute;
+  z-index: 80;
+  top: 11px;
+  left: 50%;
+  width: 126px;
+  height: 37px;
+  margin-left: -63px;
+  background: #000;
+  border-radius: 20px;
+}
+
+.island::after {
+  content: "";
+  position: absolute;
+  right: 22px;
+  top: 12px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #1d2a4d, #05070d 70%);
+}
+
+.status {
+  position: absolute;
+  z-index: 70;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 54px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.status .l,
+.status .r {
+  width: 133px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 14px;
+}
+
+.status .l {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+.status .r {
+  gap: 6px;
+}
+
+.status svg {
+  display: block;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+}
+
+.status {
+  transition: color 0.3s;
+}
+
+.device.passcode-active {
+  background: linear-gradient(
+    145deg,
+    #b7b7be 0%,
+    #66666e 16%,
+    #27272d 45%,
+    #55555e 75%,
+    #b6b6bc 100%
+  );
+  box-shadow:
+    0 0 0 1px #09090b,
+    0 36px 85px #000a,
+    inset 0 0 5px #fff7;
+}
+
+.device.passcode-active .bezel {
+  background: #030303;
+  box-shadow: inset 0 0 0 1px #35353a;
+}
+
+.device.passcode-active .screen {
+  overflow: hidden;
+  border-radius: 56px;
+  box-shadow: inset 0 0 0 1px #ffffff12;
+}
+
+.screen {
+  --lg-fill: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.34) 0%,
+    rgba(255, 255, 255, 0.12) 48%,
+    rgba(255, 255, 255, 0.22) 100%
+  );
+  --lg-filter: blur(18px) saturate(150%) brightness(1.06);
+  --lg-edge: rgba(255, 255, 255, 0.38);
+  --lg-hi: rgba(255, 255, 255, 0.85);
+  --lg-lo: rgba(255, 255, 255, 0.38);
+  --lg-glow: rgba(255, 255, 255, 0.1);
+  --lg-drop: 0 10px 24px rgba(0, 0, 0, 0.22), 0 2px 5px rgba(0, 0, 0, 0.14);
+  --lg-press: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.32)
+  );
+}

@@ -1,0 +1,84 @@
+/* =====================================================================
+   SHELL — bagian yang dipakai SEMUA aplikasi
+   • .applayer  : animasi buka/tutup aplikasi (zoom dari ikon)
+   • .home-ind  : garis home di bawah layar (tombol home)
+   • .bar-dark  : status bar + home bar jadi GELAP (dipakai app berlatar terang)
+   • #themeBtn  : tombol tema di luar HP (muncul kalau app punya tema)
+   ===================================================================== */
+
+/* ---------- Lapisan aplikasi ---------- */
+.applayer {
+  z-index: 22;
+  border-radius: 56px;
+  opacity: 0;
+  transform: scale(0.16);
+  pointer-events: none;
+  overflow: hidden;
+  background: #000;
+  transition:
+    transform 0.5s var(--ease),
+    opacity 0.3s ease,
+    border-radius 0.5s var(--ease);
+}
+.applayer.open {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+  border-radius: 0;
+}
+.applayer button { cursor: pointer; font-family: var(--font); }
+.applayer input  { user-select: text; -webkit-user-select: text; }
+
+/* ---------- Status bar & home indicator ---------- */
+.status { color: #fff; transition: color 0.25s ease; }
+.home-ind {
+  position: absolute;
+  z-index: 85;                 /* di atas semua lapisan app, jadi selalu bisa ditekan */
+  bottom: 8px;
+  left: 50%;
+  width: 144px;
+  height: 5px;
+  margin-left: -72px;
+  background: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+.home-ind::before { content: ""; position: absolute; inset: -16px -12px; }  /* area tekan diperluas */
+.screen.bar-dark .status   { color: #111; }
+.screen.bar-dark .home-ind { background: #17171b; }
+
+/* ---------- Tombol tema (di luar HP) ---------- */
+#themeBtn {
+  display: none;
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 100;
+  padding: 9px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+body.has-theme #themeBtn { display: block; }
+body.noframe #themeBtn   { display: none !important; }
+
+/* ---------- Avatar bulat (dipakai Instagram, X, Music) ---------- */
+.av { position: relative; flex: none; border-radius: 50%; overflow: hidden; display: grid; place-items: center; }
+.av img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+.av .ini { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-weight: 600; }
+
+/* ---------- Toast ---------- */
+.phone-toast {
+  position: absolute; z-index: 88; left: 50%; top: 64px; transform: translate(-50%, -12px);
+  padding: 10px 18px; border-radius: 999px; font-size: 14px; font-weight: 500; white-space: nowrap;
+  background: rgba(30, 30, 34, 0.82); color: #fff; opacity: 0; pointer-events: none;
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+  transition: opacity 0.25s, transform 0.25s var(--ease);
+}
+.phone-toast.show { opacity: 1; transform: translate(-50%, 0); }
