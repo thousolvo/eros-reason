@@ -21,6 +21,7 @@
 .ig-scroll { position: absolute; inset: 0; overflow-y: auto; padding: 54px 0 130px; scrollbar-width: none; }
 .ig-scroll::-webkit-scrollbar { display: none; }
 .ig-scroll.dark { padding: 0; background: #000; color: #fff; scroll-snap-type: y mandatory; }
+.ig-fade { position: absolute; z-index: 3; top: 5; left: 0; right: 0; height: 150px; pointer-events: none; background: linear-gradient(#fff 50%, transparent); }
 
 /* ---------- Header ---------- */
 .ig-top { display: flex; align-items: center; justify-content: space-between; padding: 6px 16px 8px; min-height: 52px; }

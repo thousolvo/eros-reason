@@ -1,0 +1,11 @@
+.notif-layer{position:absolute;left:0;right:0;top:0;z-index:60;padding:54px 10px 0;pointer-events:none}
+.notif{pointer-events:auto;display:flex;gap:10px;align-items:center;padding:12px 14px;margin-bottom:8px;
+  border-radius:24px;color:#fff;cursor:pointer;
+  background:rgba(40,40,44,.6);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);
+  box-shadow:0 8px 30px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.18);
+  transform:translateY(-140%);opacity:0;transition:transform .5s cubic-bezier(.2,1.1,.3,1),opacity .3s}
+.notif.on{transform:none;opacity:1}
+.notif .ic{width:38px;height:38px;border-radius:9px;flex:none;overflow:hidden}
+.notif .ic svg{width:100%;height:100%}
+.notif b{display:block;font-size:14px}
+.notif span{display:block;font-size:13px;opacity:.85}

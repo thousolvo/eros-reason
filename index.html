@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="css/home.css">
 <link rel="stylesheet" href="css/lock.css">
 <link rel="stylesheet" href="css/shell.css">
+<link rel="stylesheet" href="css/notif.css">
 
 <!-- ============ CSS: satu file per aplikasi ============ -->
 <link rel="stylesheet" href="apps/whatsapp/whatsapp.css">
@@ -23,6 +24,7 @@
 <link rel="stylesheet" href="apps/messages/messages.css">
 <link rel="stylesheet" href="apps/photos/photos.css">
 <link rel="stylesheet" href="apps/safari/safari.css">
+<link rel="stylesheet" href="apps/clock/clock.css">
 <link rel="stylesheet" href="apps/misc/misc.css">
 </head>
 <body>
@@ -104,6 +106,9 @@
         <!-- Semua aplikasi membuat layar-nya sendiri di sini (lihat folder apps/) -->
         <div id="appLayers"></div>
 
+        <!-- Pop-up notifikasi -->
+        <div class="notif-layer" id="notifLayer"></div>
+
         <div class="home-ind" id="homeind" title="Home"></div>
         <div class="glare"></div>
         <div class="off-cover"></div>
@@ -117,6 +122,7 @@
 <script src="js/core/helpers.js"></script>
 <script src="js/core/icons.js"></script>
 <script src="js/core/phone.js"></script>
+<script src="js/core/notif.js"></script>
 
 <!-- ============ JS: aplikasi (satu folder per aplikasi) ============ -->
 <script src="apps/whatsapp/whatsapp.data.js"></script>
@@ -131,10 +137,13 @@
 <script src="apps/messages/messages.js"></script>
 <script src="apps/photos/photos.js"></script>
 <script src="apps/safari/safari.js"></script>
+<script src="apps/reminders/reminders.data.js"></script>
+<script src="apps/reminders/reminders.js"></script>
 <script src="apps/misc/simple-app.js"></script>
 <script src="apps/misc/settings.js"></script>
 <script src="apps/misc/notes.js"></script>
-<script src="apps/misc/clock.js"></script>
+<script src="apps/clock/clock.data.js"></script>
+<script src="apps/clock/clock.js"></script>
 <script src="apps/misc/maps.js"></script>
 <script src="apps/misc/mail.js"></script>
 <script src="apps/misc/camera.js"></script>

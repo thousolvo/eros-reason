@@ -12,7 +12,7 @@ const CONFIG = {
 /* Susunan ikon di home screen (pakai "id" aplikasi).
    Ubah urutan / hapus / tambah id di sini. Grid = 4 kolom. */
 const HOME_LAYOUT = {
-  grid: ["camera", "clock", "whatsapp", "notes", "weather", "maps", "settings", "photos", "instagram", "x"],
+  grid: ["camera", "clock", "whatsapp", "notes", "weather", "reminders", "maps", "settings", "photos", "instagram", "x"],
   dock: ["mail", "safari", "messages", "music"],
 };
 
